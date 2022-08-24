@@ -8,8 +8,7 @@ function Navigation(props) {
     const handleToggleMenu = () => setShowMenu(!showMenu);
     return (
         <nav className="navigation">
-            <button className="navigation__burger" type="button" onClick={handleToggleMenu}>
-            </button>
+            <button className="navigation__burger" type="button" onClick={handleToggleMenu}></button>
             <div className={`navigation__container ${showMenu ? "navigation__container_visible" : ""}`}>
                 <div className="navigation__slider">
                     <button className="navigation__close" type="button" onClick={handleToggleMenu}></button>
@@ -32,12 +31,12 @@ function Navigation(props) {
                     </ul>
                     <NavLink to="/profile" className="navigation__profile">
                         Аккаунт
-                        <img className="navigation__profile-img" src={icon} alt="Аккаунт"/>
+                        <img className="navigation__profile-img" src={icon} alt="Аккаунт" />
                     </NavLink>
                 </div>
             </div>
         </nav>
-    )
+    );
 }
 
 export default Navigation;

@@ -1,5 +1,5 @@
 import React from "react";
-import "../AboutProject/aboutProject.css"
+import "../AboutProject/aboutProject.css";
 
 function AboutProject(props) {
     return (
@@ -28,7 +28,7 @@ function AboutProject(props) {
                 </div>
             </div>
         </section>
-    )
+    );
 }
 
 export default AboutProject;

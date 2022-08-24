@@ -1,5 +1,5 @@
 import { Routes, Route, useLocation } from "react-router-dom";
-import React from 'react';
+import React from "react";
 import Login from "../Login/Login.js";
 import Register from "../Registr/Registr.js";
 import NotFound from "../NotFound/NotFound.js";
@@ -14,48 +14,25 @@ function App() {
 
     return (
         <div className="App">
-
             <Routes>
+                <Route exact path="/" element={<Main />}></Route>
 
-                <Route
-                    exact path="/"
-                    element={<Main/>}>
-                </Route>
+                <Route path="/signup" element={<Register />}></Route>
 
-                <Route path="/signup"
-                       element={<Register />}>
-                </Route>
+                <Route path="/signin" element={<Login />}></Route>
 
-                <Route path="/signin"
-                       element={<Login />}>
-                </Route>
+                <Route path="*" element={<NotFound />}></Route>
 
-                <Route path="*"
-                       element={<NotFound />}>
-                </Route>
+                <Route path="/movies" element={<Movie />}></Route>
 
-                <Route path="/movies"
-                       element={<Movie />}>
-                </Route>
+                <Route path="/saved-movies" element={<SavedMovies />} exact></Route>
 
-                <Route path="/saved-movies"
-                       element={<SavedMovies />} exact>
-                </Route>
-
-                <Route path="/profile"
-                       element={<Profile />}>
-                </Route>
+                <Route path="/profile" element={<Profile />}></Route>
             </Routes>
 
-            {pathname === "/" ||
-            pathname === "/movies" ||
-            pathname === "/saved-movies" ? (
-                <Footer />
-            ) : (
-                ""
-            )}
+            {pathname === "/" || pathname === "/movies" || pathname === "/saved-movies" ? <Footer /> : ""}
         </div>
-    )
+    );
 }
 
 export default App;

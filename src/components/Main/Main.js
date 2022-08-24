@@ -14,7 +14,7 @@ function Main(props) {
             <Technologies />
             <AboutMe />
         </main>
-    )
+    );
 }
 
 export default Main;
