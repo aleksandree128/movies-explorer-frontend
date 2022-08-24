@@ -1,0 +1,211 @@
+.aboutMe {
+    padding: 110px 70px;
+    text-align: start;
+    background-color: #ffffff;
+    font-family: "Inter";
+    font-style: normal;
+    font-weight: 400;
+}
+
+.aboutMe__container{
+    display: flex;
+    align-content: space-between;
+    flex-direction: column;
+    max-height: 485px;
+    flex-wrap: wrap;
+    margin: 66px auto 0;}
+
+.aboutMe__title {
+    font-weight: 400;
+    font-size: 22px;
+    line-height: 27px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    padding-bottom: 23px;
+    border-bottom: 1px solid #000000;
+    margin: 0;
+}
+
+.aboutMe__subtitle {
+    font-weight: 400;
+    font-size: 50px;
+    line-height: 58px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    margin: 0;
+}
+
+.aboutMe__profession{
+    margin: 18px 0 0 0;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 20px;
+    color: #111111;
+}
+
+.aboutMe__text{
+    max-width: 600px;
+    margin-top: 26px;
+    margin: 26px 0 99px 0;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+    color: #000000;
+}
+
+.aboutMe__link{
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    color: #000000;
+    text-decoration: none;
+}
+
+.aboutMe__image{
+    width: 270px;
+    height: 327px;
+    border-radius: 10px;
+    object-fit: cover;
+    object-position: center;
+    margin-left: 250px;
+}
+
+@media (max-width: 1279px) {
+    .aboutMe {
+        padding: 90px 50px;
+    }
+    .aboutMe__container{
+        max-height: 553px;
+    }
+    .aboutMe__subtitle {
+        font-size: 40px;
+        line-height: 40px;
+    }
+    .aboutMe__profession{
+        font-size: 12px;
+        line-height: 18px;
+        margin: 16px 0 0 0;
+    }
+    .aboutMe__text{
+        font-size: 12px;
+        line-height: 18px;
+        margin-top: 20px;
+        max-width: 364px;
+        margin: 20px 0 87px 0;
+    }
+    .aboutMe__image{
+        width: 255px;
+        height: 307px;
+        margin-left: 49px;
+    }
+}
+
+@media (max-width: 767px) {
+    .aboutMe {
+        padding: 90px 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .aboutMe {
+        padding: 70px 14px;
+    }
+    .aboutMe__container{
+        flex-direction: column-reverse;
+        flex-wrap: nowrap;
+        max-height: 1000px;
+    }
+    .aboutMe__image{
+        width: 289px;
+        height: 352px;
+        margin: 60px auto 40px;
+    }
+    .aboutMe__subtitle {
+        font-size: 30px;
+        line-height: 36px;
+    }
+    .aboutMe__profession {
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px 0 0 0;
+    }
+    .aboutMe__text{
+        font-size: 11px;
+        line-height: 16px;
+        margin: 20px 0 40px 0;
+        max-width: none;
+    }
+}
+
+.aboutMe__portfolio {
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 20px;
+    color: #a0a0a0;
+    padding-bottom: 50px;
+    text-align: left;
+    margin: 0;
+}
+
+.aboutMe__lists {
+    padding: 0;
+    margin: 0;
+}
+
+.aboutMe__list {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    padding-bottom: 19px;
+    list-style-type: none;
+    border-bottom: 1px solid #e8e8e8;
+    padding-top: 20px;
+    padding-bottom: 19px;
+}
+.aboutMe__list:first-child {
+    padding-top: 0;
+}
+.aboutMe__list:last-child {
+    padding-bottom: 0;
+    border-bottom: none;
+}
+
+.aboutMe__link {
+    font-weight: 400;
+    font-size: 30px;
+    line-height: 50px;
+    letter-spacing: -0.04em;
+    color: #000000;
+    text-decoration: none;
+    display: flex;
+    justify-content: space-between;
+
+}
+
+@media (max-width: 1279px) {
+    .aboutMe__portfolio {
+        padding: 90px 0 50px;
+    }
+    .aboutMe__link {
+        font-size: 28px;
+        line-height: 50px;
+    }
+}
+
+@media (max-width: 767px) {
+    .aboutMe__container {
+        margin: 0;
+    }
+    .aboutMe__portfolio {
+        padding: 70px 0 40px;
+    }
+    .aboutMe__title {
+        font-size: 14px;
+        line-height: 20px;
+        padding-bottom: 27px;
+    }
+    .aboutMe__link {
+        font-size: 18px;
+        line-height: 28px;
+    }
+}
