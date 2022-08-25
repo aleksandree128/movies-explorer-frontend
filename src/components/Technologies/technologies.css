@@ -106,6 +106,7 @@
         line-height: 16px;
     }
     .technologies__lists {
+        margin: 0;
         grid-template-columns: repeat(2, 100px);
     }
     .technologies__list {

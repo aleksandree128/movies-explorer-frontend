@@ -170,6 +170,11 @@
     border-bottom: none;
 }
 
+.aboutMe__photo-link {
+    align-items: center;
+    display: flex;
+}
+
 .aboutMe__link {
     font-weight: 400;
     font-size: 30px;

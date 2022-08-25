@@ -9,6 +9,8 @@
 }
 
 .searchForm__input {
+    width: 100%;
+    margin-right: 10px;
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
@@ -16,6 +18,7 @@
     line-height: 34px;
     border: none;
     padding: 0;
+    background-color: #F9F9F9;
 }
 
 .searchForm__button {
@@ -25,6 +28,7 @@
     height: 34px;
     border: none;
     transition: opasity .5s;
+    color: #FFFFFF;
 }
 .searchForm__button:hover{
     opacity: 0.6;

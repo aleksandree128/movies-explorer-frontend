@@ -27,19 +27,19 @@ function AboutMe(props) {
                     <a className="aboutMe__link" href="https://github.com/aleksandree128/how-to-learn" target="_blank">
                         Статичный сайт
                     </a>
-                    <img className="aboutMe__photo-link" src={link} />
+                    <a className="aboutMe__photo-link" href="https://github.com/aleksandree128/how-to-learn" target="_blank"><img src={link} /></a>
                 </li>
                 <li className="aboutMe__list">
                     <a className="aboutMe__link" href="https://github.com/aleksandree128/russian-travel" target="_blank">
                         Адаптивный сайт
                     </a>
-                    <img className="aboutMe__photo-link" src={link} />
+                    <a className="aboutMe__photo-link" href="https://github.com/aleksandree128/russian-travel" target="_blank"><img src={link} /></a>
                 </li>
                 <li className="aboutMe__list">
-                    <a className="aboutMe__link" href="https://github.comaleksandree128/react-mesto-api-full" target="_blank">
+                    <a className="aboutMe__link" href="https://github.com/aleksandree128/react-mesto-api-full" target="_blank">
                         Одностраничное приложение
                     </a>
-                    <img className="aboutMe__photo-link" src={link} />
+                    <a className="aboutMe__photo-link" href="https://github.com/aleksandree128/react-mesto-api-full" target="_blank"><img src={link} /></a>
                 </li>
             </ul>
         </section>
