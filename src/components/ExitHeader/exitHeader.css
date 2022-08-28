@@ -1,0 +1,46 @@
+.exitHeader {
+    display: flex;
+    justify-content: space-between;
+    width: 173px;
+    align-items: center;
+}
+
+.exitHeader__link {
+    color: white;
+    font-size: 12px;
+    line-height: 16px;
+    text-decoration: none;
+}
+
+.exitHeader__button {
+    color: black;
+    font-size: 12px;
+    line-height: 16px;
+    background-color: #2BE080;
+    border-radius: 3px;
+    cursor: pointer;
+    transition: opacity 0.5s;
+    border: none;
+    margin-left: 30px;
+    width: 76px;
+    height: 32px;
+}
+
+.exitHeader__button:hover {
+    opacity: 0.6;
+}
+
+@media (max-width: 767px) {
+    .exitHeader {
+        width: 144px;
+    }
+    .exitHeader__link {
+        font-size: 10px;
+    }
+    .exitHeader__button {
+        width: 54px;
+        height: 26px;
+        margin-left: 26px;
+    }
+}
+

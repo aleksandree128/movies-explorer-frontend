@@ -1,0 +1,123 @@
+.register {
+    max-width: 395px;
+    display: flex;
+    flex-direction: column;
+    margin: 70px auto;
+    font-family: "Inter";
+    font-style: normal;
+}
+
+.register__logo {
+    width: 38px;
+    height: 38px;
+}
+
+.register__title {
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 29px;
+    color: black;
+    margin: 40px auto;
+}
+
+.register__form {
+    display: flex;
+    flex-direction: column;
+}
+
+.register__label {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #a0a0a0;
+    text-align: left;
+    margin-bottom: 5px;
+}
+.register__input {
+    padding: 0;
+    margin: 0;
+    outline: none;
+    height: 17px;
+    border: none;
+    padding-bottom: 10px;
+    margin-bottom: 24px;
+    font-weight: 500;
+    font-size: 13px;
+    line-height: 16px;
+    border-bottom: 2px solid #E8E8E8;
+}
+
+.register__input:last-child {
+    margin-bottom: 0;
+}
+
+.register__input:focus {
+    border-bottom: 2px solid #FF6838;
+}
+
+.register__error {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ff3055;
+}
+
+.register__btn-auth {
+    margin-top: 69px;
+    background: #FF6838;
+    border-radius: 3px;
+    border: none;
+    height: 45px;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 17px;
+    text-align: center;
+    color: #ffffff;
+}
+
+.register__link {
+    margin-top: 16px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 17px;
+    color: #FF6838;
+    text-align: center;
+    text-decoration: none;
+}
+
+.register__text {
+    color: #a0a0a0;
+    margin-right: 5px;
+}
+
+@media (max-width: 1279px) {
+    .register {
+        margin: 232px auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .register {
+        margin: 56px 30px 30px;
+    }
+
+    .register__logo-center {
+        align-self: center;
+    }
+
+    .register__title {
+        margin: 50px auto 80px;
+    }
+    .register__label {
+        margin-bottom: 10px;
+    }
+    .register__link {
+        font-size: 12px;
+        line-height: 15px;
+        margin-top: 14px;
+    }
+    .register__btn-auth {
+        font-size: 12px;
+        line-height: 15px;
+    }
+}
