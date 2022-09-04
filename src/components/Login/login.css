@@ -68,6 +68,21 @@
     color: #ffffff;
 }
 
+.login__error {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ff3055;
+}
+
+.login__btn-login:disabled {
+    background-color: #d9d9d9;
+    color: #000;
+    cursor: default;
+    pointer-events: none;
+    opacity: 20%;
+}
+
 .login__link {
     margin-top: 16px;
     font-weight: 400;

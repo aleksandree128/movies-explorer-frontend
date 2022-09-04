@@ -2,15 +2,16 @@ import React from "react";
 import logo from "../../images/logo.svg";
 import ExitHeader from "../ExitHeader/ExitHeader";
 import "../Header/header.css";
-
+import Navigation from "../Navigation/Navigation";
 import { Link } from "react-router-dom";
-function Header({ isLoggedIn }) {
+
+function Header({ loggedIn }) {
     return (
-        <header className={`header ${isLoggedIn ? "header_theme_light" : ""}`}>
+        <header className={`header ${loggedIn ? "header_theme_light" : ""}`}>
             <Link to="/">
                 <img className="header__logo" src={logo} alt="Логотип" />
             </Link>
-            <ExitHeader />
+            {loggedIn ? <Navigation /> : <ExitHeader />}
         </header>
     );
 }

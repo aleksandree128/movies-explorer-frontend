@@ -1,39 +1,90 @@
 import React from "react";
-import "./profile.css";
-import "../Header/header.css";
-import { Link } from "react-router-dom";
-import logo from "../../images/logo.svg";
-import Navigation from "../Navigation/Navigation";
+import "../Profile/profile.css";
+import { CurrentUserContext } from "../../context/CurrentUserContext";
 
-function Profile(props) {
+function Profile({ onUpdateUser, onSignOut }) {
+    const currentUser = React.useContext(CurrentUserContext);
+    const [name, setName] = React.useState(currentUser.name);
+    const [email, setEmail] = React.useState(currentUser.email);
+    const [initialName, setInitialName] = React.useState(currentUser.name);
+    const [initialEmail, setInitialEmail] = React.useState(currentUser.email);
+    const [activeButton, setActiveButton] = React.useState(false);
+
+    function handleChangeName(e) {
+        setName(e.target.value);
+        if (e.target.value !== initialName) {
+            setActiveButton(true);
+        } else {
+            setActiveButton(false);
+        }
+    }
+
+    function handleChangeEmail(e) {
+        setEmail(e.target.value);
+        if (e.target.value !== initialEmail) {
+            setActiveButton(true);
+        } else {
+            setActiveButton(false);
+        }
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault();
+        setActiveButton(false);
+        onUpdateUser({
+            name: name,
+            email: email,
+        });
+        localStorage.setItem("name", name);
+        localStorage.setItem("email", email);
+    }
+
+    React.useEffect(() => {
+        const localName = localStorage.getItem("name");
+        if (localName) {
+            setInitialName(localName);
+        }
+        const localEmail = localStorage.getItem("email");
+        if (localEmail) {
+            setInitialEmail(localEmail);
+        }
+    }, []);
+
     return (
-        <>
-            <div className="header header_theme_light">
-                <Link to="/">
-                    <img className="header__logo" src={logo} alt="Логотип" />
-                </Link>
-                {<Navigation />}
-            </div>
-            <section className="profile">
-                <h2 className="profile__greeting">Привет, Александр!</h2>
-                <form className="profile__user">
-                    <div className="profile__line">
-                        <label className="profile__caption">Имя</label>
-                        <input className="profile__content" id="name" placeholder="Александр"></input>
-                    </div>
-                    <div className="profile__line">
-                        <label className="profile__caption">E-mail</label>
-                        <input className="profile__content" id="email" placeholder="user@mail.ru"></input>
-                    </div>
-                </form>
-                <button className="profile__btn-update" type="button">
+        <section className="profile">
+            <h2 className="profile__greeting">Привет, {name}!</h2>
+            <form className="profile__user" onSubmit={handleSubmit}>
+                <div className="profile__line">
+                    <label className="profile__caption">Имя</label>
+                    <input
+                        className="profile__content"
+                        value={name}
+                        onChange={handleChangeName}
+                        id="name"
+                        required
+                    ></input>
+                </div>
+                <div className="profile__line">
+                    <label className="profile__caption">E-mail</label>
+                    <input
+                        className="profile__content"
+                        value={email}
+                        id="email"
+                        onChange={handleChangeEmail}
+                        required
+                    ></input>
+                </div>
+                <button
+                    className="profile__btn-update"
+                    disabled={!activeButton}
+                >
                     Редактировать
                 </button>
-                <Link to="/movies" className="profile__exit">
-                    Выйти из аккаунта
-                </Link>
-            </section>
-        </>
+            </form>
+            <button onClick={onSignOut} className="profile__exit">
+                Выйти из аккаунта
+            </button>
+        </section>
     );
 }
 

@@ -3,12 +3,12 @@ import Promo from "../Promo/Promo";
 import AboutProject from "../AboutProject/AboutProject";
 import Technologies from "../Technologies/Technologies";
 import AboutMe from "../AboutMe/AboutMe";
-import Header from "../Header/Header";
+import InfoTooltip from '../InfoTooltip/InfoTooltip';
 
 function Main(props) {
     return (
         <main>
-            <Header />
+            <InfoTooltip/>
             <Promo />
             <AboutProject />
             <Technologies />

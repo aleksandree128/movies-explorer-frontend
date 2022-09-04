@@ -1,37 +1,124 @@
-import image_1 from "../../images/cards/image-1.png";
-import image_2 from "../../images/cards/image-2.png";
-import image_3 from "../../images/cards/image-3.png";
-import image_4 from "../../images/cards/image-4.png";
-import image_5 from "../../images/cards/image-5.png";
-import image_6 from "../../images/cards/image-6.png";
-import image_7 from "../../images/cards/image-7.png";
-import image_8 from "../../images/cards/image-8.png";
-import image_9 from "../../images/cards/image-9.png";
-import image_10 from "../../images/cards/image-10.png";
-import image_11 from "../../images/cards/image-11.png";
-import image_12 from "../../images/cards/image-12.png";
-
 import React from "react";
 import "../MovieCardsLists/movieCardsLists.css";
 import MoviesCard from "../MovieCards/MovieCards";
 
-function MovieCardsLists(props) {
+function MovieCardsLists({
+    notFound = true,
+    moviesList = [],
+    onSaveClick = false,
+    onDeleteClick = false,
+    savedMoviesList = [],
+    savedMoviesPage = false,
+}) {
+    const [movieList, setMovieList] = React.useState([]);
+    const [cardsShowDetails, setCardsShowDetails] = React.useState({
+        total: 12,
+        extra: 3,
+    });
+    const [isMount, setIsMount] = React.useState(true);
+    const getScreenWidth = React.useCallback(() => window.innerWidth, []);
+    const [screenWidth, setScreenWidth] = React.useState(getScreenWidth());
+    const moviesCount = {
+        bigScreen: { width: 1280, cards: { total: 12, extra: 3 } },
+        normalScreen: { width: 768, cards: { total: 8, extra: 2 } },
+        smallScreen: { width: 480, cards: { total: 5, extra: 2 } },
+    };
+    React.useEffect(() => {
+        function handleScreenResize() {
+            setScreenWidth(getScreenWidth());
+        }
+        window.addEventListener("resize", resizeController, false);
+        let resizeTimer;
+        function resizeController() {
+            if (!resizeTimer) {
+                resizeTimer = setTimeout(() => {
+                    resizeTimer = null;
+                    handleScreenResize();
+                }, 1000);
+            }
+        }
+        return () => window.removeEventListener("resize", handleScreenResize);
+    }, [getScreenWidth]);
+
+    React.useEffect(() => {
+        if (screenWidth >= moviesCount.bigScreen.width) {
+            setCardsShowDetails(moviesCount.bigScreen.cards);
+        } else if (
+            screenWidth <= moviesCount.bigScreen.width &&
+            screenWidth > moviesCount.normalScreen.width
+        ) {
+            setCardsShowDetails(moviesCount.normalScreen.cards);
+        } else {
+            setCardsShowDetails(moviesCount.smallScreen.cards);
+        }
+        return () => setIsMount(false);
+    }, [screenWidth, isMount]);
+
+    function handleClickElse() {
+        const start = movieList.length;
+        const end = start + cardsShowDetails.extra;
+        const additional = moviesList.length - start;
+
+        if (additional > 0) {
+            const newCards = moviesList.slice(start, end);
+            setMovieList([...movieList, ...newCards]);
+        }
+    }
+
+    React.useEffect(() => {
+        if (moviesList.length) {
+            const res = moviesList.filter(
+                (item, i) => i < cardsShowDetails.total
+            );
+            setMovieList(res);
+        }
+    }, [moviesList, savedMoviesPage, cardsShowDetails.total]);
+
+    function getSavedMovieCard(savedMoviesList, movie) {
+        return savedMoviesList.find(
+            (savedMovie) => savedMovie.movieId === movie.id
+        );
+    }
     return (
         <section className="movieCardsLists">
-            <div className="movieCardsLists__elements">
-                <MoviesCard picture={image_1} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_2} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_3} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_4} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_5} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_6} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_7} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_8} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_9} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_10} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_11} title={"В погоне за Бенкси"} duration={"27 минут"} />
-                <MoviesCard picture={image_12} title={"В погоне за Бенкси"} duration={"27 минут"} />
-            </div>
+            <>
+                {notFound ? (
+                    <p className="moviesCardList__notFound">
+                        Ничего не найдено.
+                    </p>
+                ) : (
+                    <>
+                        <div className="movieCardsLists__elements">
+                            {movieList.map((movie) => (
+                                <MoviesCard
+                                    saved={getSavedMovieCard(
+                                        savedMoviesList,
+                                        movie
+                                    )}
+                                    key={movie.id || movie._id}
+                                    movie={movie}
+                                    onSaveClick={onSaveClick}
+                                    onDeleteClick={onDeleteClick}
+                                    savedMoviesPage={savedMoviesPage}
+                                />
+                            ))}
+                        </div>
+                        {movieList.length >= 5 &&
+                        movieList.length < moviesList.length ? (
+                            <div className="moviesCardList__else">
+                                <button
+                                    className="moviesCardList__btn"
+                                    onClick={handleClickElse}
+                                >
+                                    Ещё
+                                </button>
+                            </div>
+                        ) : (
+                            ""
+                        )}
+                    </>
+                )}
+            </>
         </section>
     );
 }
