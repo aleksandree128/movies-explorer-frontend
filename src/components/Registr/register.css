@@ -73,6 +73,7 @@
     line-height: 17px;
     text-align: center;
     color: #ffffff;
+    cursor: pointer;
 }
 
 .register__btn-auth:disabled {

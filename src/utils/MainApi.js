@@ -1,6 +1,7 @@
 class MainApi {
-    constructor({ baseUrl }) {
+    constructor({ baseUrl, headers }) {
         this._baseUrl = baseUrl;
+        this._headers = headers;
     }
 
     _checkResponse(res) {
@@ -64,7 +65,8 @@ class MainApi {
         }).then((res) => this._checkResponse(res));
     }
 
-    addMovie(movie){
+    addMovie(movies){
+        console.log(movies)
         return fetch(`${this._baseUrl}/movies`, {
             method: "POST",
             headers: {
@@ -72,17 +74,17 @@ class MainApi {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                country: movie.country,
-                director: movie.director,
-                duration: movie.duration,
-                year: movie.year,
-                description: movie.description,
-                image: 'https://api.nomoreparties.co' + movie.image.url,
-                trailerLink: movie.trailerLink,
-                thumbnail: 'https://api.nomoreparties.co' + movie.thumbnail,
-                movieId: movie.id,
-                nameRU: movie.nameRU,
-                nameEN: movie.nameEN,
+                country: movies.country,
+                director: movies.director,
+                duration: movies.duration,
+                year: movies.year,
+                description: movies.description,
+                image: 'https://api.nomoreparties.co' + movies.image.url,
+                trailerLink: movies.trailerLink,
+                thumbnail: 'https://api.nomoreparties.co' + movies.thumbnail,
+                movieId: movies.id,
+                nameRU: movies.nameRU,
+                nameEN: movies.nameEN,
             }),
         }).then(this._checkResponse);
     }
@@ -99,9 +101,14 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
+    // baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL ||
+    //    '//localhost:3001'}`,
     baseUrl: "https://api.korshinov.diplom.nomoredomains.sbs",
+    //baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL}`,
     headers: {
-        "Content-Type": "application/json",
-        "Accept": "application/json",
+        Accept: "application/json",
     },
 });
+
+
+//https://api.maria.diploma.nomoredomains.xyz https://api.korshinov.diplom.nomoredomains.sbs

@@ -3,7 +3,7 @@ import "../MovieCardsLists/movieCardsLists.css";
 import MoviesCard from "../MovieCards/MovieCards";
 
 function MovieCardsLists({
-    notFound = true,
+    nothingFound = true,
     moviesList = [],
     onSaveClick = false,
     onDeleteClick = false,
@@ -82,7 +82,7 @@ function MovieCardsLists({
     return (
         <section className="movieCardsLists">
             <>
-                {notFound ? (
+                {nothingFound ? (
                     <p className="moviesCardList__notFound">
                         Ничего не найдено.
                     </p>

@@ -69,6 +69,7 @@ function Register({ onSignUp }) {
                     name="password"
                     minLength="5"
                     maxLength="40"
+                    required
                 />
                 <span className="register__error">{errors.password}</span>
                 <button
