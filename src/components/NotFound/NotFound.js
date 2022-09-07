@@ -2,7 +2,7 @@ import React from "react";
 import "../NotFound/notFound.css";
 import { Link } from "react-router-dom";
 
-function NotFound(props) {
+function NotFound() {
     return (
         <section className="notFound">
             <h2 className="notFound__title">404</h2>

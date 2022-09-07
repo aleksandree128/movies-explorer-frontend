@@ -2,7 +2,7 @@ import React from "react";
 import promoImage from "../../images/promo_lable.svg";
 import "../Promo/promo.css";
 
-function Promo(props) {
+function Promo() {
     return (
         <section className="promo">
             <div className="promo__container">
