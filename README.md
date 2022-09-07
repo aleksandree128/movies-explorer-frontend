@@ -1,2 +1,2 @@
 # movies-explorer-frontend
-https://github.com/aleksandree128/movies-explorer-frontend/pull/2
+# https://github.com/aleksandree128/movies-explorer-frontend/pull/2
