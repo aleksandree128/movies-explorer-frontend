@@ -1,7 +1,6 @@
 class MainApi {
-    constructor({ baseUrl, headers }) {
+    constructor({ baseUrl }) {
         this._baseUrl = baseUrl;
-        this._headers = headers;
     }
 
     _checkResponse(res) {
@@ -41,7 +40,7 @@ class MainApi {
         }).then((res) => this._checkResponse(res));
     }
 
-    editProfile(info) {
+    updateUser(data) {
         return fetch(`${this._baseUrl}/users/me`, {
             method: "PATCH",
             headers: {
@@ -49,8 +48,8 @@ class MainApi {
                 "Content-Type": "application/json",
             },
             body: JSON.stringify({
-                name: info.name,
-                email: info.email,
+                name: data.name,
+                email: data.email,
             }),
         }).then(this._checkResponse);
     }
@@ -101,14 +100,8 @@ class MainApi {
 }
 
 export const mainApi = new MainApi({
-    // baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL ||
-    //    '//localhost:3001'}`,
     baseUrl: "https://api.korshinov.diplom.nomoredomains.sbs",
-    //baseUrl: `${window.location.protocol}${process.env.REACT_APP_API_URL}`,
     headers: {
         Accept: "application/json",
     },
 });
-
-
-//https://api.maria.diploma.nomoredomains.xyz https://api.korshinov.diplom.nomoredomains.sbs

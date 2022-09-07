@@ -5,45 +5,45 @@ import "../SavedMovies/savedMovies.css";
 import "../Header/header.css";
 
 function SavedMovies({
-    user = {},
-    onDeleteClick = false,
-    savedMoviesList = [],
-}) {
+                         user = {},
+                         onDeleteClick = false,
+                         savedMoviesList = [],
+                     }) {
     const [inputValue, setInputValue] = React.useState(false);
     const [shortMovies, setShortMovies] = React.useState(false);
     const [notFound, setNotFound] = React.useState(true);
     const [showedMovies, setShowedMovies] = React.useState(savedMoviesList);
     const [filteredMovies, setFilteredMovies] = React.useState(showedMovies);
 
-    function filterMovies(movies, request, shortMoviesSwitch) {
-        const foundMovies = movies.filter((movie) => {
-            return movie.nameRU.toLowerCase().includes(request.toLowerCase());
-        });
-
-        if (shortMoviesSwitch) {
-            return filterShortMovies(foundMovies);
-        } else {
-            return foundMovies;
-        }
-    }
-
     function filterShortMovies(movies) {
         return movies.filter((movie) => movie.duration <= 40);
     }
 
-    function handleSearchSubmit(inputValue) {
-        localStorage.setItem("savedMoviesSearch", inputValue);
+    function filterMovies(movies, request, shortMoviesList) {
+        const searchMovie = movies.filter((movie) => {
+            return movie.nameRU.toLowerCase().includes(request.toLowerCase());
+        });
+
+        if (shortMoviesList) {
+            return filterShortMovies(searchMovie);
+        } else {
+            return searchMovie;
+        }
+    }
+
+    function handleSearch(value) {
+        localStorage.setItem("savedMoviesSearch", value);
         if (
-            filterMovies(savedMoviesList, inputValue, shortMovies).length === 0
+            filterMovies(savedMoviesList, value, shortMovies).length === 0
         ) {
             setNotFound(true);
         } else {
             setNotFound(false);
             setFilteredMovies(
-                filterMovies(savedMoviesList, inputValue, shortMovies)
+                filterMovies(savedMoviesList, value, shortMovies)
             );
             setShowedMovies(
-                filterMovies(savedMoviesList, inputValue, shortMovies)
+                filterMovies(savedMoviesList, value, shortMovies)
             );
             localStorage.setItem(
                 "savedMovies",
@@ -93,10 +93,11 @@ function SavedMovies({
             setNotFound(true);
         }
     }, [savedMoviesList]);
+
     return (
         <>
             <SearchForm
-                handleSearchSubmit={handleSearchSubmit}
+                handleSearchSubmit={handleSearch}
                 checkBoxClick={handleShortFilms}
                 shortMovies={shortMovies}
                 inputValue={inputValue}

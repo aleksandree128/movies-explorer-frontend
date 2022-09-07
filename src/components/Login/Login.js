@@ -9,6 +9,11 @@ function Login({ onSignIn }) {
     const [isValid, setIsValid] = React.useState(false);
     const [errors, setErrors] = React.useState({});
 
+    function handleSubmit(e) {
+        e.preventDefault();
+        onSignIn(values);
+    }
+
     function handleChange(e) {
         if (e.target.name === "email") {
             if (!validator.isEmail(e.target.value)) {
@@ -21,11 +26,6 @@ function Login({ onSignIn }) {
         setValues({ ...values, [e.target.name]: e.target.value });
         setIsValid(e.target.closest("form").checkValidity());
         setErrors({ ...errors, [e.target.name]: e.target.validationMessage });
-    }
-
-    function handleSubmit(e) {
-        e.preventDefault();
-        onSignIn(values);
     }
 
     return (

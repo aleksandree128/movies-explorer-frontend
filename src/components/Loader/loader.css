@@ -43,9 +43,11 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 100%;
     height: 100%;
     z-index: 10;
-    padding: 20px;
+    padding-top: 30px;
+    padding-bottom: 30px;
 }
 
 .loader__container {
@@ -60,7 +62,7 @@
     position: absolute;
     top: 0;
     left: 0;
-    background: #2BE080;
+    background: #FF6838;
     border-radius: 50px;
 }
 
@@ -77,11 +79,11 @@
 
 .loader__round::after {
     background: white;
-    animation: preloader-inside-white 1.5s ease-in-out infinite;
+    animation: preloader-inside-white 1s ease-in-out infinite;
 }
 
 .loader__round::before {
     z-index: 10;
-    background: #2BE080;
-    animation: preloader-inside-red 1.5s ease-in-out infinite;
+    background: #FF6838;
+    animation: preloader-inside-red 1s ease-in-out infinite;
 }
