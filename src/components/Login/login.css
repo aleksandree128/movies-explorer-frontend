@@ -106,6 +106,9 @@
 }
 
 @media (max-width: 767px) {
+    .login__logo-center {
+        align-self: center;
+    }
     .login {
         margin: 56px 30px 30px;
     }

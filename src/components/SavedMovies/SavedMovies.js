@@ -15,20 +15,20 @@ function SavedMovies({
     const [showedMovies, setShowedMovies] = React.useState(savedMoviesList);
     const [filteredMovies, setFilteredMovies] = React.useState(showedMovies);
 
-    function filterShortMovies(movies) {
-        return movies.filter((movie) => movie.duration <= 40);
-    }
-
-    function filterMovies(movies, request, shortMoviesList) {
-        const searchMovie = movies.filter((movie) => {
-            return movie.nameRU.toLowerCase().includes(request.toLowerCase());
+    function filterMovies(movies, request, shortMoviesSwitch) {
+        const foundMovies = movies.filter((movie) => {
+            return movie.nameRU.toLowerCase().includes(request.toLowerCase())
         });
 
-        if (shortMoviesList) {
-            return filterShortMovies(searchMovie);
+        if (shortMoviesSwitch) {
+            return filterShortMovies(foundMovies);
         } else {
-            return searchMovie;
+            return foundMovies;
         }
+    }
+
+    function filterShortMovies(movies) {
+        return movies.filter((movie) => movie.duration <= 40);
     }
 
     function handleSearch(value) {
