@@ -8,9 +8,7 @@ REST API для аутентификации пользователей и со�
 Адрес домена сервера: https://api.cinema-explorer.students.nomoredomains.icu/
 
 Адрес размещения фронтенда на сервере: https://cinema-explorer.students.nomoredomains.icu/
-ссылка на пул /*https://github.com/aleksandree128/movies-explorer-frontend/pull/4*/
 ссылка на сайт http://korshinov.diplom.nomoredomains.sbs/
 ссылка на макет https://www.figma.com/file/zdTOCfOzJp2yaUpCXgsVuW/Diploma-(Copy)?node-id=891%3A3857
-=======
-# https://github.com/aleksandree128/movies-explorer-frontend/pull/2
->>>>>>> main
+
+https://github.com/aleksandree128/movies-explorer-frontend/pull/2
