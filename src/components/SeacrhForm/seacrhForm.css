@@ -8,9 +8,14 @@
     padding-bottom: 5px;
 }
 
-.searchForm__input {
+.searchForm__container {
     width: 100%;
+    display: flex;
+    flex-direction: column;
     margin-right: 10px;
+}
+
+.searchForm__input {
     font-family: "Inter";
     font-style: normal;
     font-weight: 500;
@@ -53,6 +58,18 @@
 .searchForm__switch-input {
     display: none;
 }
+
+.searchForm__error {
+    font-weight: 400;
+    font-size: 10px;
+    line-height: 12px;
+    color: #ff3055;
+}
+
+.searchForm__error_active {
+    display: block;
+}
+
 
 .searchForm__switch-slider {
     position: absolute;

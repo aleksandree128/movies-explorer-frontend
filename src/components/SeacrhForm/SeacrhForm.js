@@ -5,35 +5,44 @@ function SearchForm({
                       handleSearchSubmit = () => {},
                       shortMovies = false,
                       checkBoxClick = () => {},
-                      inputValue,
+                      inputValue
                     }) {
   const [inputSearch, setInputSearch] = React.useState("");
+  const [errorsSearchText, setErrorsSearchText] = React.useState("");
 
-  function handleChangeInput(e) {
-    setInputSearch(e.target.value);
+    function handleChangeInput(e) {
+        setInputSearch(e.target.value);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    handleSearchSubmit(inputSearch);
+      if (inputSearch === "") {
+          setErrorsSearchText("Нужно ввести ключевое слово");
+      } else {
+          setErrorsSearchText("");
+          handleSearchSubmit(inputSearch);
+      }
+
   }
+
   React.useEffect(() => {
     setInputSearch(inputValue);
   }, [inputValue]);
   return (
       <form className="searchForm" onSubmit={handleSubmit}>
         <div className="searchForm__main-string">
-          <input
-              className="searchForm__input"
-              onChange={handleChangeInput}
-              name="film"
-              value={inputSearch || ""}
-              type="text"
-              placeholder="Фильм"
-              minLength="2"
-              maxLength="30"
-              required
-          ></input>
+            <div className="searchForm__container">
+                <input
+                    className="searchForm__input"
+                    onChange={handleChangeInput}
+                    name="film"
+                    value={inputSearch || ""}
+                    type="text"
+                    maxLength="40"
+                    placeholder="Фильм"
+                ></input>
+                <span className="searchForm__error round">{errorsSearchText}</span>
+            </div>
           <button type="submit" className="searchForm__button">
             Найти
           </button>

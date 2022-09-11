@@ -117,7 +117,7 @@ function MovieCardsLists({
                             ""
                         )}
                     </>
-                )}
+                    )}
             </>
         </section>
     );

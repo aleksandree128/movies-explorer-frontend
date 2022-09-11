@@ -24,7 +24,6 @@ function App() {
     const [errorMessage, setErrorMessage] = useState("");
     const navigate = useNavigate();
     const [savedMoviesList, setSavedMoviesList] = React.useState([]);
-
     function handleRegistration({ name, password, email }) {
         mainApi
             .registration({ name, password, email })
@@ -113,16 +112,22 @@ function App() {
         setIsInfoTooltipOpen(false);
     }
 
-    function handleSignOut() {
+    function handleSignOut(e) {
+
         setCurrentUser({});
         setLoggedIn(false);
         localStorage.removeItem("jwt");
+        localStorage.removeItem('movies');
+        localStorage.removeItem('inputValue');
+        localStorage.removeItem('query');
+        localStorage.removeItem('savedMoviesSearch');
+        localStorage.removeItem('movieSearch');
         navigate("/");
     }
 
     function handleUpdateUser(info) {
         mainApi
-            .editProfile(info)
+            .updateUser(info)
             .then((res) => {
                 setCurrentUser(res);
                 setIsInfoTooltipOpen(true);
@@ -171,11 +176,11 @@ function App() {
                 });
                 setSavedMoviesList(newMoviesList);
             })
-            .catch(() => {
+            .catch((err) => {
                 setIsInfoTooltipOpen(true);
                 setMessage({
                     successful: false,
-                    message: "Что-то пошло не так",
+                    message: "Что-то пошло не так((",
                 });
             });
     }

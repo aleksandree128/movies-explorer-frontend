@@ -30,7 +30,9 @@ function Login({ onSignIn }) {
 
     return (
         <section className="login">
-            <img className="login__logo" src={logo} alt="Логотип" />
+            <Link to="/" className="login__logo-center">
+                <img className="login__logo" src={logo} alt="Логотип" />
+            </Link>
             <h2 className="login__title">Рады видеть!</h2>
             <form className="login__form" onSubmit={handleSubmit}>
                 <label className="login__label">E-mail</label>

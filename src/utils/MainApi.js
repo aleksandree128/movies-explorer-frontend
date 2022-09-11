@@ -102,6 +102,7 @@ class MainApi {
 export const mainApi = new MainApi({
     baseUrl: "https://api.korshinov.diplom.nomoredomains.sbs",
     headers: {
-        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Accept": "application/json",
     },
 });
